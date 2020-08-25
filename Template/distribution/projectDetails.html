@@ -1,6 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head> 
+    <style type="text/css">
+      .imageDiv{
+        padding-right: 10px
+      }
+      form{
+        padding-top: 0px;
+        width: 200px;
+        height: 120px;
+        border: 4px dashed #fff;
+      }
+      form p{
+        width: 100%;
+        height: 120%;
+        margin-bottom: 50% ;
+        font-size: 100px;
+        text-align: center;
+        line-height: 170px;
+        color: #ffffff;
+        font-family: Arial;
+      }
+      form input{
+        position: absolute;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        width: 200%;
+        height: 80%;
+        outline: none;
+        opacity: 0;
+      }
+      
+
+
+
+
+    </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Dark Bootstrap Admin by Bootstrapious.com</title>
@@ -188,6 +224,76 @@
             </div>
           </div>
         </section>
+
+        <section class="no-padding-bottom">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="checklist-block block">
+                  <div class="title"><strong>Section</strong></div>
+                  <div class="checklist">
+                    <div class="item d-flex align-items-center">
+                    </div>
+                    <div class="item d-flex align-items-center">
+                      <div class="imageDiv"> <form action="upload.php" method="POST">
+                          <input type="file" multiple>
+                          <p> + </p>
+                        </form>
+                      </div>
+                      <div class="imageDiv"><a download="custom-filename.jpg" href="img/Trash_Logo.jpg" title="ImageName">
+                        <img src="img/Trash_Logo.jpg" height="120" width="200"> </a></div>
+                      <div class="imageDiv"><a download="custom-filename.jpg" href="img/Trash_Logo.jpg" title="ImageName">
+                        <img src="img/Trash_Logo.jpg" height="120" width="200"> </a></div>
+                      <div class="imageDiv"><a download="custom-filename.jpg" href="img/Trash_Logo.jpg" title="ImageName">
+                        <img src="img/Trash_Logo.jpg" height="120" width="200"> </a></div>
+                      <div class="imageDiv"> <button style= "height: 120px" type="submit" class="btn btn-secondary">See More ...</button> </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="no-padding-bottom">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="checklist-block block">
+                  <div class="title"><strong>Section</strong></div>
+                  <div class="checklist">
+                    <div class="item d-flex align-items-center">
+
+                    </div>
+                    <div class="item d-flex align-items-center">
+                      <div class="public-user-block block">
+              <div class="row d-flex align-items-center">                   
+                <div class="col-lg-4 d-flex align-items-center">
+                  <div class="order">4th</div>
+                  <div class="avatar"> <img src="img/avatar-1.jpg" alt="..." class="img-fluid"></div><a href="#" class="name"><strong class="d-block">Tomas Hecktor</strong><span class="d-block">@tomhecktor</span></a>
+                </div>
+                <div class="col-lg-4 text-center">
+                  <div class="contributions">Commit message</div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="details d-flex">
+                    <div class="item"><i ></i><strong>Date</strong></div>
+                    <div class="item"><i ></i><strong>Month</strong></div>
+                    <div class="item"><i ></i><strong>Year</strong></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div> <button style="" type="submit" class="btn btn-secondary">See More ...</button> </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+    
 
 
 
