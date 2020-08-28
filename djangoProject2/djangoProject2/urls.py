@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from pages.views import homeView, createrPojectView, projectListView, projectDetailsView, sectionView, messengerView, aboutUsView, loginView, registerView
 
+from user.views import RegisterView, LoginView, LogoutView
+from pages.views import homeView, createrPojectView, projectListView, projectDetailsView, sectionView, messengerView, aboutUsView
+from django.conf.urls.static import static
+from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homeView, name="index"),
@@ -24,9 +27,11 @@ urlpatterns = [
     path('projects/',projectListView, name="projectList" ),
     path('messenger/', messengerView, name="messenger"),
     path('about/', aboutUsView, name="aboutUs"),
-    path('login/', loginView, name="login"),
-    path('register/', registerView, name="register"),
+    path('login/', LoginView, name="login"),
+    path('logout/',LogoutView, name="logout"),
+    path('register/', RegisterView, name="register"),
     path('details/', projectDetailsView, name="projectDetails"),
     path('section/', sectionView, name="section"),
 
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
