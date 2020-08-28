@@ -11,10 +11,12 @@ def homeView(request):
     obj=Manager.objects.get(user=request.user)
     if form.is_valid():
         m=toDoListModel.objects.get(manager=obj)
-        toDoListItem.objects.create(
-            text= form.cleaned_data.get('text'),
-            items= m
-        )
+        t=form.cleaned_data.get('text')
+        if t is not None:
+            toDoListItem.objects.create(
+                text= t,
+                items= m
+            )
     context = {
         "obj": obj,
         "form": form
