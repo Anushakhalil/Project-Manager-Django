@@ -181,14 +181,15 @@
 
         <section class="no-padding-bottom">
           <div class="container-fluid">
+            {% for i in lst %}
             <div class="row">
               <div class="col-lg-4">
                 <div class="user-block block text-center">
                   <div class="avatar"><img src="{% static 'img/avatar-1.jpg' %}" alt="..." class="img-fluid">
-                    <div class="order dashbg-2">1st</div>
+                    <div class="order dashbg-2">{{ i.serialNo }}</div>
                   </div><a href="#" class="user-title">
-                    <h3 class="h5">Richard Nevoreski</h3><span>@richardnevo</span></a>
-                  <div class="contributions">950 Contributions</div>
+                    <h3 class="h5">{{ i.name }}</h3><span>{{ obj.githubName }}</span></a>
+                  <div class="contributions">{{ i.commits }} Commits</div>
                   <!-- progress bar -->
                   <div class="statistic-block block">
                   <div class="progress-details d-flex align-items-end justify-content-between">
@@ -202,41 +203,15 @@
                 </div>
 
                   <div class="details d-flex">
-                    <div class="item"><i class="icon-info"></i><strong>150</strong></div>
-                    <div class="item"><i class="fa fa-gg"></i><strong>340</strong></div>
-                    <div class="item"><i class="icon-flow-branch"></i><strong>460</strong></div>
+                    <div class="item"><i class="icon-info"></i><strong>{{ i.issues }}</strong></div>
+                    <div class="item"><i class="fa fa-gg"></i><strong>{{ i.pullreq_C }}</strong></div>
+                    <div class="item"><i class="icon-flow-branch"></i><strong>{{ i.pullreq_O }}</strong></div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4">
-                <div class="user-block block text-center">
-                  <div class="avatar"><img src="{% static 'img/avatar-4.jpg' %}" alt="..." class="img-fluid">
-                    <div class="order dashbg-1">2nd</div>
-                  </div><a href="#" class="user-title">
-                    <h3 class="h5">Samuel Watson</h3><span>@samwatson</span></a>
-                  <div class="contributions">772 Contributions</div>
-                  <div class="details d-flex">
-                    <div class="item"><i class="icon-info"></i><strong>80</strong></div>
-                    <div class="item"><i class="fa fa-gg"></i><strong>420</strong></div>
-                    <div class="item"><i class="icon-flow-branch"></i><strong>272</strong></div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="user-block block text-center">
-                  <div class="avatar"><img src="{% static 'img/avatar-6.jpg' %}" alt="..." class="img-fluid">
-                    <div class="order dashbg-4">3rd</div>
-                  </div><a href="#" class="user-title">
-                    <h3 class="h5">Sebastian Wood</h3><span>@sebastian</span></a>
-                  <div class="contributions">620 Contributions</div>
-                  <div class="details d-flex">
-                    <div class="item"><i class="icon-info"></i><strong>150</strong></div>
-                    <div class="item"><i class="fa fa-gg"></i><strong>280</strong></div>
-                    <div class="item"><i class="icon-flow-branch"></i><strong>190</strong></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              {% endfor %}
+
+              
             
             
             
@@ -259,32 +234,17 @@
                       </div> <!-- div.row -->
                     </div>
                       </form>
+                      {% for i in items %}
                     <div class="item d-flex align-items-center" style="justify-content: space-between;">
                       <div style="float: left;">
                         <input type="checkbox" id="input-1" name="input-1" class="checkbox-template">
-                        <label for="input-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</label>
+                        <label for="input-1">{{ i.text }}</label>
                       </div>
                       <div style="float: right;">
                         <a href="#"><i class="fa fa-trash-o fa-2x"></i></a>
                       </div>
                     </div>
-                    <div class="item d-flex align-items-center">
-                      <input type="checkbox" id="input-2" name="input-2" checked class="checkbox-template">
-                      <label for="input-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</label>
-                    </div>
-                    <div class="item d-flex align-items-center">
-                      <input type="checkbox" id="input-3" name="input-3" class="checkbox-template">
-                      <label for="input-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</label>
-                    </div>
-                    <div class="item d-flex align-items-center">
-                      <input type="checkbox" id="input-4" name="input-4" class="checkbox-template">
-                      <label for="input-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</label>
-                    </div>
-                    <div class="item d-flex align-items-center">
-                      <input type="checkbox" id="input-5" name="input-5" class="checkbox-template">
-                      <label for="input-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</label>
-                    </div>
-                    
+                      {% endfor %}
                   </div>
                 </div>
               </div>
