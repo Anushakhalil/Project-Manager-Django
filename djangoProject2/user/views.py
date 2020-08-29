@@ -4,8 +4,6 @@ from django.shortcuts import render, redirect
 from .forms import createUserForm, createUserForm2
 from django.contrib.auth import authenticate, login, logout
 from .models import Manager
-from pages.models import toDoListModel
-
 
 
 def RegisterView(request):
@@ -25,11 +23,6 @@ def RegisterView(request):
                     picture= form.cleaned_data.get('picture'),
                     user= form2.save()
                 )
-
-                toDoListModel.objects.create(
-                    manager = obj
-                )
-
 
 
 
