@@ -21,23 +21,16 @@ def homeView(request):
                 items= m
             )
     items= m.todolistitem_set.all()
-    class Git():
-        def __init__ (self,name,commits,pullreq_O,pullreq_C,issues,serialNo):
-            self.name=name
-            self.commits=commits
-            self.pullreq_O=pullreq_O
-            self.pullreq_C=pullreq_C
-            self.issues=issues
-            self.serialNo = serialNo
+    
     g= Github(obj.githubName,obj.githubPassword)
-    lst=[]
-    for i,repo in enumerate(g.get_user().get_repos()):
-        try:
-            C=len(list(repo.get_commits()))
-        except:
-            C=0
-        obj=Git(repo.name,C,len(list(repo.get_pulls(state='open'))),len(list(repo.get_pulls(state='closed'))),len(list(repo.get_issues())),i+1)
-        lst.append(obj)
+    # lst=[]
+    lst=enumerate(g.get_user().get_repos())
+    #     try:
+    #         C=len(list(repo.get_commits()))
+    #     except:
+    #         C=0
+        # ob=Git(repo.name,C,len(list(repo.get_pulls(state='open'))),len(list(repo.get_pulls(state='closed'))),len(list(repo.get_issues())),i+1)
+        # lst.append(ob)
 
 
     context = {

@@ -153,7 +153,7 @@
       <nav id="sidebar">
         <!-- Sidebar Header-->
         <div class="sidebar-header d-flex align-items-center">
-          <div class="avatar"><img src="{{ obj.picture.url }}" alt="..." class="img-fluid rounded-circle"></div>
+          <div class="avatar"><img src="" alt="..." class="img-fluid rounded-circle"></div>
           <div class="title">
             <h1 class="h5">{{ obj.username }}</h1>
             <p>{{ obj.githubName }}</p>
@@ -181,15 +181,18 @@
 
         <section class="no-padding-bottom">
           <div class="container-fluid">
-            {% for i in lst %}
+            {% for i,repo in lst %}
             <div class="row">
               <div class="col-lg-4">
                 <div class="user-block block text-center">
                   <div class="avatar"><img src="{% static 'img/avatar-1.jpg' %}" alt="..." class="img-fluid">
-                    <div class="order dashbg-2">{{ i.serialNo }}</div>
+                    <div class="order dashbg-2">{{ i|add:"1" }}</div>
                   </div><a href="#" class="user-title">
-                    <h3 class="h5">{{ i.name }}</h3><span>{{ obj.githubName }}</span></a>
-                  <div class="contributions">{{ i.commits }} Commits</div>
+                    <h3 class="h5">{{ repo.name }}</h3><span>{{ obj.githubName }}</span></a>
+                    {% with com=repo.get_commits %}
+                    {{ com|make_list }}
+                  <div class="contributions">{{ com|length }} Commits</div>
+                  {% endwith %}
                   <!-- progress bar -->
                   <div class="statistic-block block">
                   <div class="progress-details d-flex align-items-end justify-content-between">
