@@ -189,10 +189,9 @@
                     <div class="order dashbg-2">{{ i|add:"1" }}</div>
                   </div><a href="#" class="user-title">
                     <h3 class="h5">{{ repo.name }}</h3><span>{{ obj.githubName }}</span></a>
-                    {% with com=repo.get_commits %}
-                    {{ com|make_list }}
-                  <div class="contributions">{{ com|length }} Commits</div>
-                  {% endwith %}
+                    
+                  <div class="contributions">{{ repo.get_commits()|make_list|length }} Commits</div>
+                  
                   <!-- progress bar -->
                   <div class="statistic-block block">
                   <div class="progress-details d-flex align-items-end justify-content-between">
