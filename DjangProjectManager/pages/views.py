@@ -22,7 +22,7 @@ def homeView(request):
                 text= t,
                 items= m
             )
-            return redirect('index')
+            
     items= m.todolistitem_set.all()
     
     class Git:
@@ -78,6 +78,9 @@ def messengerView(request):
 def aboutUsView(request):
     return render(request, 'aboutUs.html', {})
 
-# @login_required(login_url='login')
-# def reloadHomePage(request):
+@login_required(login_url='login')
+def deleteTodo(request, todo_id):
+    a = toDoListItem.objects.get(id=todo_id)
+    a.delete()
+    return redirect('index')
 
