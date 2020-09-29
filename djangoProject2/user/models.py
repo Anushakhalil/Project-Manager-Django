@@ -9,3 +9,6 @@ class Manager(models.Model):
     githubPassword= models.CharField(max_length= 20)
     picture= models.ImageField(blank=True, null=True, upload_to= 'images/')
     user= models.OneToOneField(User, blank=True, null=True, on_delete= models.CASCADE)
+
+class test(models.Model):
+    picture = models.ImageField(null=True, blank=True)

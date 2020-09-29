@@ -62,5 +62,15 @@ def LogoutView(request):
     logout(request)
     return redirect('login')
 
-
+from .forms import testForm
+from .models import test
+def testView(request):
+    form = testForm(request.POST, request.FILES)
+    if form.is_valid():
+        print("valid")
+        p = form.cleaned_data.get('pic')
+        print('pic')
+        test.objects.create(picture=p)
+        return redirect('login')
+    return render(request,"test.html",{"form":form})
 

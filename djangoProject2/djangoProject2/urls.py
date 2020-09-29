@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from user.views import RegisterView, LoginView, LogoutView
+from user.views import RegisterView, LoginView, LogoutView, testView
 from pages.views import homeView, createrPojectView, projectListView, projectDetailsView, sectionView, messengerView, aboutUsView
 from django.conf.urls.static import static
 from django.conf import settings
@@ -29,7 +29,7 @@ urlpatterns = [
     path('about/', aboutUsView, name="aboutUs"),
     path('login/', LoginView, name="login"),
     path('logout/',LogoutView, name="logout"),
-    path('register/', RegisterView, name="register"),
+    path('register/', testView, name="register"),
     path('details/', projectDetailsView, name="projectDetails"),
     path('section/', sectionView, name="section"),
 

@@ -13,3 +13,5 @@ class createUserForm2(UserCreationForm):
         model= User
         fields=['username','password1', 'password2']
 
+class testForm(forms.Form):
+    pic = forms.ImageField()
