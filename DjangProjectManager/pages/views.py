@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.contrib.auth.decorators import login_required
@@ -22,6 +22,7 @@ def homeView(request):
                 text= t,
                 items= m
             )
+            return redirect('index')
     items= m.todolistitem_set.all()
     
     class Git:
@@ -76,3 +77,7 @@ def messengerView(request):
 @ login_required(login_url='login')
 def aboutUsView(request):
     return render(request, 'aboutUs.html', {})
+
+# @login_required(login_url='login')
+# def reloadHomePage(request):
+
