@@ -57,6 +57,7 @@ def homeView(request):
 @ login_required(login_url='login')
 def createrPojectView(request):
     obj=Manager.objects.get(user=request.user)
+    g= Github(obj.githubName,obj.githubPassword)
     lst = [obj.githubName]
 
     form = projectForm(request.POST)
@@ -66,7 +67,7 @@ def createrPojectView(request):
         repo_access = form.cleaned_data.get('access')
         repo_fields = form.cleaned_data.get('fields')
         if repo_name != "" and repo_desc != "" and len(repo_fields) != 0 and repo_access != "":
-            projectModel.objects.create(
+            pObj = projectModel.objects.create(
                 name = repo_name,
                 description = repo_desc,
                 access = repo_access,
@@ -76,6 +77,16 @@ def createrPojectView(request):
                 designing_field = "Designing" in repo_fields,
                 development_field = "Development" in repo_fields,
             )
+            g.get_user().create_repo(
+                repo_name,
+                description=repo_desc,
+                private= "private" in repo_access
+            )
+            
+            return redirect('projectDetails', project_id=pObj.id)
+
+    
+
     context = {
         "lst":obj.githubName,
         "form": form,
@@ -88,7 +99,7 @@ def projectListView(request):
     return render(request, 'projectList.html', {})
 
 @ login_required(login_url='login')
-def projectDetailsView(request):
+def projectDetailsView(request, project_id):
     return render(request, 'projectDetails.html', {})
 
 @ login_required(login_url='login')

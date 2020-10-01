@@ -17,7 +17,7 @@ urlpatterns = [
     path('login/', LoginView, name="login"),
     path('logout/',LogoutView, name="logout"),
     path('register/', RegisterView, name="register"),
-    path('details/', projectDetailsView, name="projectDetails"),
+    path('details/<int:project_id>/', projectDetailsView, name="projectDetails"),
     path('section/', sectionView, name="section"),
     path('', include('pages.urls')),
 ]
