@@ -151,10 +151,11 @@
                 <div class="block">
                   <div class="title"><strong>Create Project</strong></div>
                   <div class="block-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method= "POST"> {% csrf_token %}
                       <!-- create repo field -->
 
                       <div class="line"></div>
+                      
                       <div class="form-group row"> <!-- has-success has-danger -->
                         <label class="col-sm-3 form-control-label"> Name </label>
                         <div class="col-sm-9">
@@ -166,13 +167,13 @@
                             </div>
 
                               <div class="input-group-prepend">
-                                <button data-toggle="dropdown" type="button" class="btn btn-outline-secondary dropdown-toggle">Action <span class="caret"></span></button>
-                                <div class="dropdown-menu"><a href="#" class="dropdown-item">Action</a><a href="#" class="dropdown-item">Another action</a><a href="#" class="dropdown-item">Something else here</a>
+                                <button data-toggle="dropdown" type="button" class="btn btn-outline-secondary dropdown-toggle">{{ lst }} <span class="caret"></span></button>
+                                <!-- <div class="dropdown-menu"><a href="#" class="dropdown-item">Action</a><a href="#" class="dropdown-item">Another action</a><a href="#" class="dropdown-item">Something else here</a>
                                   <div class="dropdown-divider"></div><a href="#" class="dropdown-item">Separated link</a>
-                                </div>
+                                </div> -->
                                 <span class="input-group-text">/</span>
                               </div>
-                                <input type="text" class="form-control"> <!-- is-valid is-invalid -->
+                                <input type="text" name="name" class="form-control"> <!-- is-valid is-invalid -->
                                 <!-- <div class="invalid-feedback">Please provide your name.</div> -->
                               </div>
                           </div>
@@ -182,24 +183,29 @@
                       <div class="form-group row">
                         <label class="col-sm-3 form-control-label">Description</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control">
+                          <input type="text" name="description" class="form-control">
                         </div>
                       </div>
 
                       <!-- Private Public -->
+
+                      
                       <div class="form-group row">
                         <label class="col-sm-3 form-control-label">Repo Type <br><small class="text-primary">Select if the Repo should be Public or Private</small></label>
                         <div class="col-sm-9">
                           <div class="i-checks">
-                            <input id="radioCustom1" type="radio" value="option1" name="a" class="radio-template">
+                            <!-- FORM K RADIO BUTTON K LYE, VALUE=CHOICEVALUE, -->
+                            <input id="radioCustom1" type="radio" value="public" name="access" class="radio-template">
                             <label for="radioCustom1">Public</label>
                           </div>
                           <div class="i-checks">
-                            <input id="radioCustom2" type="radio" checked="" value="option2" name="a" class="radio-template">
+                            <input id="radioCustom2" checked="" type="radio" value="private" name="access" class="radio-template">
                             <label for="radioCustom2">Private</label>
                           </div>
                         </div>
                       </div>
+                      
+
                       
                       <!-- Fields Select -->
                       <div class="form-group row">

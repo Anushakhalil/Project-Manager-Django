@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 from user.models import Manager
-from .forms import toDoListItemForm
+from .forms import toDoListItemForm, projectForm
 from .models import toDoListModel, toDoListItem
 from github import Github
 
@@ -56,7 +56,22 @@ def homeView(request):
 
 @ login_required(login_url='login')
 def createrPojectView(request):
-    return render(request, 'createProjectForm.html',{})
+    obj=Manager.objects.get(user=request.user)
+    lst = [obj.githubName]
+
+    form = projectForm(request.POST)
+    if form.is_valid():
+        #access contains the public and private info
+        acc = form.cleaned_data.get('fields')
+        print(acc)
+        
+        return redirect('index')
+    context = {
+        "lst":obj.githubName,
+        "form": form,
+        
+    }
+    return render(request, 'createProjectForm.html',context)
 
 @ login_required(login_url='login')
 def projectListView(request):
