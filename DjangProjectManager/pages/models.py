@@ -13,13 +13,12 @@ class toDoListItem(models.Model):
     def returnURL(self):
         return reverse('Todo:todo', kwargs={"todo_id": self.id})
 
-# class projectModel(models.Model):
-#     accessChoices = [
-#         ('public', 'public'),
-#         ('private', 'private'),
-#     ]
-#     name = models.CharField(max_length=100)
-#     description = models.CharField(max_length= 1000)
-#     access = models.MultipleChoiceField(
-#         widget=models
-#     )
+class projectModel(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length= 1000)
+    access = models.CharField(max_length=100)
+    requrirements_field = models.BooleanField()
+    wireframes_field = models.BooleanField()
+    logo_field = models.BooleanField()
+    designing_field = models.BooleanField()
+    development_field = models.BooleanField()

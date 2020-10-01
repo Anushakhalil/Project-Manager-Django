@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 from user.models import Manager
 from .forms import toDoListItemForm, projectForm
-from .models import toDoListModel, toDoListItem
+from .models import toDoListModel, toDoListItem, projectModel
 from github import Github
 
 
@@ -61,11 +61,21 @@ def createrPojectView(request):
 
     form = projectForm(request.POST)
     if form.is_valid():
-        #access contains the public and private info
-        acc = form.cleaned_data.get('fields')
-        print(acc)
-        
-        # return redirect('index')
+        repo_name = form.cleaned_data.get('name')
+        repo_desc = form.cleaned_data.get('description')
+        repo_access = form.cleaned_data.get('access')
+        repo_fields = form.cleaned_data.get('fields')
+        if repo_name != "" and repo_desc != "" and len(repo_fields) != 0 and repo_access != "":
+            projectModel.objects.create(
+                name = repo_name,
+                description = repo_desc,
+                access = repo_access,
+                requrirements_field = "Requirements" in repo_fields,
+                wireframes_field = "Wireframes" in repo_fields,
+                logo_field = "Logo" in repo_fields,
+                designing_field = "Designing" in repo_fields,
+                development_field = "Development" in repo_fields,
+            )
     context = {
         "lst":obj.githubName,
         "form": form,
