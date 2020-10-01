@@ -65,7 +65,7 @@ def createrPojectView(request):
         acc = form.cleaned_data.get('fields')
         print(acc)
         
-        return redirect('index')
+        # return redirect('index')
     context = {
         "lst":obj.githubName,
         "form": form,

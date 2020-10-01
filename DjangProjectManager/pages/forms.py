@@ -14,13 +14,13 @@ class projectForm(forms.Form):
     fieldChoices = [
         ('Requirements', 'Requirements'),
         ('Wireframes', 'Wireframes'),
-        ('logo', 'logo'),
-        # ('Designing', 'Designing'),
+        ('Logo', 'Logo'),
+        ('Designing', 'Designing'),
         ('Development', 'Development')
     ]
-    # name = forms.CharField(max_length=100)
-    # description = forms.CharField(max_length= 1000)
-    # access = forms.CharField(widget=forms.RadioSelect(choices=accessChoices))
+    name = forms.CharField(max_length=100)
+    description = forms.CharField(max_length= 1000)
+    access = forms.CharField(widget=forms.RadioSelect(choices=accessChoices))
     fields = forms.MultipleChoiceField(
         required=False,
         widget=forms.CheckboxSelectMultiple,
